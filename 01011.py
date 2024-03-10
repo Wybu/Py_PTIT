@@ -1,16 +1,15 @@
-def checker(num):
-    numStr=str(num)
-    if len(numStr)%2==0:
+def isValid(s):
+    if len(s) % 2 == 1 or s != s[::-1]:
         return False
-    for i in range(len(numStr)):
-        if int(numStr[i]) %2 != 0:
+    for i in s:
+        if int(i) % 2 == 1:
             return False
     return True
 
-for _ in range (int(input())):
-    n=int(input())
-    for i in range(n):
-        if checker(i):
-            print(i)
 
+for t in range(int(input())):
+    n = int(input())
+    for i in range(22, n, 2):
+        if isValid(str(i)):
+            print(i, end=' ')
     print()
