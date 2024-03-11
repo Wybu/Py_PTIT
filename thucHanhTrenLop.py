@@ -1,16 +1,20 @@
-def solve (n):
-    s=0
-    shift=1
-    if n%2==0:
-        for i in range (1, n, 2) :
-            s+=(1/i)*shift
-            shift*=-1
-    else:
-        if n%2==1:
-            for i in range (0, n, 2):
-                s+=(1/(i+1))*shift
-                shift*=-1
-
+def s1(n):
+    s=1
+    for i in range (1, n+1, 1):
+        s*=i
     return s
+def s2(n):
+    if n==0:
+        return 1
+    else:
+        s=1
+        while (n>=1):
+            s*=n
+            n-=1
+            if n>0:
+                s2(n)
+            else:
+                return s
 n=int(input())
-print(solve(n))
+print(s1(n))
+print(s2(n))
