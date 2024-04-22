@@ -1,24 +1,19 @@
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
-
-def reverse_number(num):
-    return int(str(num)[::-1])
-
-def print_emirp_numbers(N):
-    emirp_numbers = []
-    for i in range(2, N):
-        if is_prime(i):
-            reversed_i = reverse_number(i)
-            if i != reversed_i and is_prime(reversed_i):
-                emirp_numbers.append(i)
-    print(*emirp_numbers, sep=' ')
 
 
-for _ in range(int(input())):
-    N = int(input())
-    print_emirp_numbers(N)
+a = [0] * 1000001
+
+def era() :
+    a[0] = a[1] = 1
+    for i in range(2, 1000) :
+        if a[i] == 0 :
+            for j in range(i * i, 1000001, i) : a[j] = 1
+
+era()
+t = int(input())
+for i in range(t) :
+    n = int(input())
+    for i in range(1, n) :
+        k = int(str(i)[::-1])
+        if k > i and k < n and a[i] == 0 and a[k] == 0 :
+            print(i, k, end = ' ')
+    print()
